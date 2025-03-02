@@ -28,8 +28,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [https://github.com/Olatoyan/invoice-app](https://github.com/Olatoyan/invoice-app)
-- Live Site URL: [https://toyan-invoice-app.netlify.app/](https://toyan-invoice-app.netlify.app/)
+- Solution URL: [https://github.com/AlvinAbiero/invoice-app](https://github.com/AlvinAbiero/invoice-app)
+- Live Site URL: [https://invoice-app-six-ashen.vercel.app/](https://invoice-app-six-ashen.vercel.app/)
 
 ## My process
 
@@ -48,5 +48,5 @@ Users should be able to:
 
 ## Author
 
-- Frontend Mentor - [@olatoyan](https://www.frontendmentor.io/profile/olatoyan)
-- Twitter - [@Toyan](https://www.twitter.com/_annonnymouss_)
+- Frontend Mentor - [@alvinabierp](https://www.frontendmentor.io/profile/alvinabiero)
+- Twitter - [@Alvin_Abiero](https://www.twitter.com/Alvin_Abiero)
