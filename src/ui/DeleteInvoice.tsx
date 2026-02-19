@@ -17,27 +17,47 @@ function DeleteInvoice({ handleUndoDelete, data }: DeleteInvoiceProps) {
   const { deleteSender } = useDeleteSenderAdd();
   const { deleteClient } = useDeleteClientAdd();
   const { deleteInvoice } = useDeleteInvoice();
-  const { deleteItems } = useDeleteItems();
+  const { deleteItemsAsync } = useDeleteItems();
+
+  // function deleteInvoiceData() {
+  //   deleteSender(data.senderAdd[0].id);
+
+  //   deleteClient(data.clientAddress[0].id, {
+  //     onSuccess: () => {
+  //       if (
+  //         data.senderAdd.length === 0 &&
+  //         data.items.length === 0 &&
+  //         data.clientAddress.length === 0
+  //       ) {
+  //         console.log("");
+  //       } else {
+  //         deleteInvoice(data.idd);
+  //       }
+  //     },
+  //   });
+
+  //   data.items.forEach((item) => {
+  //     deleteItems(item.id);
+  //   });
+  // }
 
   function deleteInvoiceData() {
-    deleteSender(data.senderAdd[0].id);
-
-    deleteClient(data.clientAddress[0].id, {
+    deleteSender(data.senderAdd[0].id, {
       onSuccess: () => {
-        if (
-          data.senderAdd.length === 0 &&
-          data.items.length === 0 &&
-          data.clientAddress.length === 0
-        ) {
-          console.log("");
-        } else {
-          deleteInvoice(data.idd);
-        }
-      },
-    });
+        deleteClient(data.clientAddress[0].id, {
+          onSuccess: () => {
+            const deleteItemsSequentially = async () => {
+              for (const item of data.items) {
+                await deleteItemsAsync(item.id);
+              }
 
-    data.items.forEach((item) => {
-      deleteItems(item.id);
+              deleteInvoice(data.idd);
+            };
+
+            deleteItemsSequentially();
+          },
+        });
+      },
     });
   }
 
