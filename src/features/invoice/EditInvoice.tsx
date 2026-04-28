@@ -39,7 +39,7 @@ function EditInvoice({ data, handleUndoEdit }: EditInvoiceProps) {
   const { updateSeAddress } = useUpdateSenderAdd();
   const { updateClAddress } = useUpdateClientAdd();
   const { updateItems } = useUpdateItems();
-  const { deleteItems } = useDeleteItems();
+  const { deleteItemsAsync } = useDeleteItems();
 
   function togglePaymentDisplay() {
     setIsPaymentDisplayed((prev) => !prev);
@@ -102,7 +102,7 @@ function EditInvoice({ data, handleUndoEdit }: EditInvoiceProps) {
   }
 
   function handleDeleteItem(deleteId: number) {
-    deleteItems(deleteId);
+    deleteItemsAsync(deleteId);
     setItemList(itemList.filter((item) => item.id !== deleteId));
     const updatedItemsList = getValues().items.filter(
       (item) => item.id !== deleteId,
